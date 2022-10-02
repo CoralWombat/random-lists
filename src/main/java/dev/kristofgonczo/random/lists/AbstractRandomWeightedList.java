@@ -66,7 +66,15 @@ public abstract class AbstractRandomWeightedList<E> implements RandomWeightedLis
     }
 
     public boolean remove(Object o) {
-        return this.list.removeIf(item -> item.item.equals(o));
+        WeightedItem<E> foundItem = this.list.stream().filter(item -> item.item.equals(o)).findFirst().orElse(null);
+        if (foundItem == null)
+            return false;
+
+        boolean removed = this.list.remove(foundItem);
+        if (removed)
+            this.weight -= foundItem.getWeight();
+
+        return removed;
     }
 
     public int size() {
