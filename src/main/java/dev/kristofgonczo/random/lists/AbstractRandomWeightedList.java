@@ -2,6 +2,7 @@ package dev.kristofgonczo.random.lists;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class AbstractRandomWeightedList<E> implements RandomWeightedList<E> {
 
@@ -35,9 +36,18 @@ public abstract class AbstractRandomWeightedList<E> implements RandomWeightedLis
 
     int weight;
 
+    Random random;
+
     public AbstractRandomWeightedList() {
         this.list = new ArrayList<>();
         this.weight = 0;
+        this.random = new Random();
+    }
+
+    public AbstractRandomWeightedList(int seed) {
+        this.list = new ArrayList<>();
+        this.weight = 0;
+        this.random = new Random(seed);
     }
 
     public boolean add(E e, int weight) {
