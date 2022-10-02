@@ -1,5 +1,7 @@
 package dev.kristofgonczo.random.lists;
 
+import java.util.Optional;
+
 /**
  * Interface for a random list, that can remove elements randomly.
  *
@@ -58,5 +60,5 @@ public interface RandomWeightedList<E> {
      *
      * @return A random element from the list.
      */
-    E next();
+    Optional<E> next();
 }
