@@ -4,6 +4,14 @@ import java.util.Optional;
 
 public class GeneralRandomWeightedList<E> extends AbstractRandomWeightedList<E> {
 
+    public GeneralRandomWeightedList() {
+        super();
+    }
+
+    public GeneralRandomWeightedList(int seed) {
+        super(seed);
+    }
+
     @Override
     public Optional<E> next() {
         int targetValue = random.nextInt(weight);
